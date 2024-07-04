@@ -123,9 +123,24 @@ tcpdump_scan() {
     echo -e "${GREEN}tcpdump completed.${RESET}"
 }
 
+# sumbdomain fuzz
+ffuf_scan() {
+   read -p "Enter url: " url
+   read -p "Enter Domain: " domain
+   read -p "Enter Wordlist: " wordlist
+   read -p "Enter responses to filter out: " filter
+   read -p "Enter name to save output: " outfile
+   echo -e "${RED}Running FFUF...${RESET}"
+   ffuf -u $url -H "HOST:FUZZ.$domain" -w $wordlist -fc $filter -o $outfile
+   echo -e "${GREEN}Scan completed${RESET}"
+ }
+ 
+#
+}
+# Main menu
 while true; do
     echo -e "${GREEN}==========================${RESET}"
-    echo -e "${WHITE}     N1ghtTools           ${RESET}"
+    echo -e "${WHITE}     HTB HelpBox      ${RESET}"
     echo -e "${GREEN}==========================${RESET}"
     echo -e "${WHITE}1. Set up netcat listener${RESET}"
     echo -e "${WHITE}2. Perform nmap scan${RESET}"
@@ -137,9 +152,10 @@ while true; do
     echo -e "${WHITE}8. Perform directory brute force attack${RESET}"
     echo -e "${WHITE}9. Enumerate SMB shares${RESET}"
     echo -e "${WHITE}10. TcpDump${RESET}"
-    echo -e "${WHITE}11. Exit${RESET}"
+    echo -e "${WHITE}11. FFuf${RESET}"
+    echo -e "${WHITE}12. Exit${RESET}"
     echo -e "${GREEN}==========================${RESET}"
-    read -p "Choose an option (1-11): " choice
+    read -p "Choose an option (1-12): " choice
 
     case $choice in
         1) setup_listener ;;
@@ -152,7 +168,8 @@ while true; do
         8) dir_scan ;;
         9) enumerate_smb ;;
         10) tcpdump_scan ;;
-        11) echo -e "${GREEN}Exiting...${RESET}"; break ;;
+        11) ffuf_scan ;;
+        12) echo -e "${GREEN}Exiting...${RESET}"; break ;;
         *) echo -e "${RED}Invalid option, please choose again.${RESET}" ;;
     esac
 done
