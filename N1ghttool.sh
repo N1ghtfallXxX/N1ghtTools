@@ -135,9 +135,7 @@ ffuf_scan() {
    echo -e "${GREEN}Scan completed${RESET}"
  }
  
-#
-}
-# Main menu
+
 while true; do
     echo -e "${GREEN}==========================${RESET}"
     echo -e "${WHITE}     N1ghtTool            ${RESET}"
