@@ -140,7 +140,7 @@ ffuf_scan() {
 # Main menu
 while true; do
     echo -e "${GREEN}==========================${RESET}"
-    echo -e "${WHITE}     HTB HelpBox      ${RESET}"
+    echo -e "${WHITE}     N1ghtTool            ${RESET}"
     echo -e "${GREEN}==========================${RESET}"
     echo -e "${WHITE}1. Set up netcat listener${RESET}"
     echo -e "${WHITE}2. Perform nmap scan${RESET}"
